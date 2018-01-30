@@ -1,7 +1,7 @@
 <?php
 
 $url = parse_url(getenv("mysql://b6cdd705707835:8cf82617@us-cdbr-iron-east-05.cleardb.net/heroku_6bdbd53fbe793dd?reconnect=true"));
-var_dump(parse_url(getenv("mysql://b6cdd705707835:8cf82617@us-cdbr-iron-east-05.cleardb.net/heroku_6bdbd53fbe793dd?reconnect=true")));
+var_dump(parse_url("mysql://b6cdd705707835:8cf82617@us-cdbr-iron-east-05.cleardb.net/heroku_6bdbd53fbe793dd?reconnect=true"));
 $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
