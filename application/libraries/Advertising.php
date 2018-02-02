@@ -5,7 +5,7 @@
  *  AdWords API integration
  */
 namespace adwords;
-require_once dirname(__DIR__).'/external/vendor/autoload.php';
+require_once dirname(__DIR__).'/libraries/external/vendor/autoload.php';
 use Google\AdsApi\AdWords\AdWordsServices;
 use Google\AdsApi\AdWords\AdWordsSession;
 use Google\AdsApi\AdWords\AdWordsSessionBuilder;
