@@ -5,8 +5,8 @@ ob_start();
  *  Skype : subinpvasu 
  *  AdWords API integration
  */
-require_once '/Credentials.php';
-require_once '/Advertising.php';
+require_once dirname(__DIR__).'/Credentials.php';
+require_once dirname(__DIR__).'/Advertising.php';
 
 use Adwords\Advertising;
 class Processor {
