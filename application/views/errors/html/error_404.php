@@ -61,9 +61,9 @@ p {
 		<?php echo $message; ?>
                 
                 <?php 
-echo base_url();
+//echo base_url();
 echo '<br/>';
-echo site_url();
+//echo site_url();
 ?>
 	</div>
 </body>
