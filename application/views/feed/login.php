@@ -94,6 +94,17 @@ span.psw {
   <div class="container" style="text-align: center;width: 300px;margin: 0px auto;">
    <div class="logger"></div>
   </div>
+  <div class="container signout" style="text-align: center;width: 300px;margin: 0px auto;display: none;">
+   <a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+  </div>
 
     
     
@@ -105,8 +116,9 @@ function onSignIn(googleUser) {
 //  console.log('Image URL: ' + profile.getImageUrl());
 //  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 $(".avatar").attr("src",profile.getImageUrl());
-  var tmp ='<table><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
+  var tmp ='<table style="text-align: center;width: 100%;"><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
   $(".logger").append(tmp);
+  $(".signout").show();
   
 }
 
