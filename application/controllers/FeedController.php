@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class FeedController extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -24,6 +24,6 @@ class Welcome extends CI_Controller {
 		$this->load->library('Processor');
 		 $msg = new Processor();
                  $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
-		$this->load->view('welcome_message');
+		$this->load->view('feed/index');
 	}
 }
