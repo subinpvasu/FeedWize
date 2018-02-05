@@ -59,6 +59,12 @@ p {
 	<div id="container">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>
+                
+                <?php 
+echo base_url();
+echo '<br/>';
+echo site_url();
+?>
 	</div>
 </body>
 </html>
