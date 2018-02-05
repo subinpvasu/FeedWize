@@ -74,7 +74,7 @@ span.psw {
     
      
      
-     <div class="logger"></div>
+     
     
     
 
@@ -87,6 +87,9 @@ span.psw {
 
   <div class="container" style="background-color:#f1f1f1;text-align: center;width: 120px;margin: 0px auto;">
    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  </div>
+  <div class="container" style="text-align: center;width: 300px;margin: 0px auto;">
+   <div class="logger"></div>
   </div>
 
     
