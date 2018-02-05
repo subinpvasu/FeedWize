@@ -88,7 +88,7 @@ span.psw {
 
   
 
-  <div class="container" style="background-color:#f1f1f1;text-align: center;width: 120px;margin: 0px auto;">
+  <div class="container" style="text-align: center;width: 120px;margin: 0px auto;">
    <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </div>
   <div class="container" style="text-align: center;width: 300px;margin: 0px auto;">
@@ -104,7 +104,8 @@ function onSignIn(googleUser) {
 //  console.log('Name: ' + profile.getName());
 //  console.log('Image URL: ' + profile.getImageUrl());
 //  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  var tmp ='<table><tr><td>'+profile.getName()+'</td><td><img src="'+profile.getImageUrl()+'"/></td></tr><tr><td>'+profile.getEmail()+'</td><td></td></tr></table>';
+$(".avatar").attr("src",profile.getImageUrl());
+  var tmp ='<table><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
   $(".logger").append(tmp);
   
 }
