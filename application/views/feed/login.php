@@ -97,12 +97,7 @@ span.psw {
   <div class="container signout" style="text-align: center;width: 300px;margin: 0px auto;display: none;">
    <a href="#" onclick="signOut();">Sign out</a>
 <script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
+  
 </script>
   </div>
 
@@ -121,7 +116,13 @@ $(".avatar").attr("src",profile.getImageUrl());
   $(".signout").show();
   
 }
-
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      $(".logger").html('<h3>User signed out.</h3>');
+      setTimeout(function(){window.location.reload();},1000);
+    });
+  }
 </script>
 </body>
 </html>
