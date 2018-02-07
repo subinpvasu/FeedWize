@@ -20,11 +20,14 @@ class FeedController extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->helper('url');
+		
 //		$this->load->library('Processor');
 //		 $msg = new Processor();
 //                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
-//		$this->load->view('feed/index');
-		$this->load->view('feed/login');
+		$this->load->view('templates/header');
+                $this->load->view('feed/index');
+		$this->load->view('templates/footer');
+		
+//		$this->load->view('feed/login');
 	}
 }
