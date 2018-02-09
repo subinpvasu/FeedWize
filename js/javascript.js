@@ -37,7 +37,7 @@ function onSignIn(googleUser) {
                                 demand:1
 		 },
 		success:function(result){
-                    this.window.location.reload(true);
+                    window.location.reload(true);
                 }
             });
   

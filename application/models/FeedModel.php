@@ -27,8 +27,8 @@ class FeedModel extends CI_Model {
     {
         $sql = "SELECT id FROM feedwize_userdata WHERE userid=".$google['userid']." AND emailid='".$google['emailid']."'";
         $query = $this->db->query($sql);
-        $count = $query->num_rows();
         $data['uid'] = $query->result();
+        $count = count($query->result());
         if($count>0)
         {
            $this->session->set_userdata('uid', $data['uid']['id']);
