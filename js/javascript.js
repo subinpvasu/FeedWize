@@ -8,8 +8,8 @@
     Author     : SUBINPVASU
 */
 
-      var baseurl = $("#baseurl").val();
-      var siteurl = $("#siteurl").val();
+       baseurl = document.getElementById("baseurl").value;
+       siteurl = document.getElementById("siteurl").value;
 
 
 function onSignIn(googleUser) {
