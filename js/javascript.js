@@ -7,13 +7,15 @@
     Created on : Feb 8, 2018, 12:54:43 AM
     Author     : SUBINPVASU
 */
-
-       baseurl = document.getElementById("baseurl").value;
-       siteurl = document.getElementById("siteurl").value;
-
+$(document).ready(function(){
+      var baseurl = $("#baseurl").val();
+      var siteurl = $("#siteurl").val();
+  });
 
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
+  var baseurl = $("#baseurl").val();
+  var siteurl = $("#siteurl").val();
 //  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 //  console.log('Name: ' + profile.getName());
 //  console.log('Image URL: ' + profile.getImageUrl());
