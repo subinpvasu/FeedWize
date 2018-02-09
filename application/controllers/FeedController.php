@@ -48,8 +48,9 @@ class FeedController extends CI_Controller {
 	}
         public function account_verification()
         {
+            
             $posted_values = array('userid'=>$_POST['googleId'],'emailid'=>$_POST['googleEml'],'username'=>$_POST['googleName'],'imageurl'=>$_POST['googleImg']);
-            $data['status'] = $this->model->user_verification($posted_values);
+            $data['status'] = $this->FeedModel->user_verification($posted_values);
             if($data['status'])
             {
             $this->session->set_userdata('user_login', TRUE);
