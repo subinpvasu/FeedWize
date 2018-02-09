@@ -18,16 +18,52 @@ class FeedController extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+    
+        public function __construct()
+        {
+            parent::__construct();
+            $this->load->library('session');
+            $this->load->model('FeedModel');
+            
+
+        }
+        
 	public function index()
 	{
 		
 //		$this->load->library('Processor');
 //		 $msg = new Processor();
 //                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
+            
+            
+            
 		$this->load->view('templates/header');
-                $this->load->view('feed/index');
+                if($this->session->userdata('user_login'))
+                {$this->load->view('feed/index');}
+                else
+                {$this->load->view('feed/login');}
 		$this->load->view('templates/footer');
 		
-//		$this->load->view('feed/login');
+		
 	}
+        public function account_verification()
+        {
+            $posted_values = array('userid'=>$_POST['googleId'],'emailid'=>$_POST['googleEml'],'username'=>$_POST['googleName'],'imageurl'=>$_POST['googleImg']);
+            $data['status'] = $this->model->user_verification($posted_values);
+            if($data['status'])
+            {
+            $this->session->set_userdata('user_login', TRUE);
+            $this->session->set_userdata('user_exisitence', TRUE);
+            $this->session->set_userdata('google_user', $posted_values);
+            }
+            else
+            {
+            $this->session->set_userdata('user_login', TRUE);
+            $this->session->set_userdata('user_exisitence', FALSE);
+            $this->session->set_userdata('google_user', $posted_values);
+            }
+            
+        }
+        
+        
 }

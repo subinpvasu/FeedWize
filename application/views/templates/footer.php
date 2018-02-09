@@ -5,9 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 ?>
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+<!--<footer class="container-fluid text-center">
+  <p>Feed Wize 2018</p>
+</footer>-->
 </body>
 </html>
