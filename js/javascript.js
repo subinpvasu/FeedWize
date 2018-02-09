@@ -7,10 +7,10 @@
     Created on : Feb 8, 2018, 12:54:43 AM
     Author     : SUBINPVASU
 */
-$(document).ready(function(){
+
       var baseurl = $("#baseurl").val();
       var siteurl = $("#siteurl").val();
-  });
+
 
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
@@ -18,12 +18,14 @@ function onSignIn(googleUser) {
 //  console.log('Name: ' + profile.getName());
 //  console.log('Image URL: ' + profile.getImageUrl());
 //  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-$(".avatar").attr("src",profile.getImageUrl());
-  var tmp ='<table style="text-align: center;width: 100%;"><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
-  $(".logger").append(tmp);
-  $(".signout").show();
   
-  $.ajax({url:siteurl+"/FeedController/account_verification/",
+  
+//$(".avatar").attr("src",profile.getImageUrl());
+//  var tmp ='<table style="text-align: center;width: 100%;"><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
+//  $(".logger").append(tmp);
+//  $(".signout").show();
+  
+  $.ajax({url: siteurl+"/FeedController/account_verification/",
 		type:"post",
 		 data: {
 			 	googleId:profile.getId(),
