@@ -23,13 +23,17 @@ $(".avatar").attr("src",profile.getImageUrl());
   $(".logger").append(tmp);
   $(".signout").show();
   
-  $.ajax({url:base_url+"index.php/customer/createInvoiceWork/",
+  $.ajax({url:siteurl+"/FeedController/account_verification/",
 		type:"post",
 		 data: {
-			 	pkwo:chkId
+			 	googleId:profile.getId(),
+                                googleName:profile.getName(),
+                                googleImg:profile.getImageUrl(),
+                                googleEml:profile.getEmail(),
+                                demand:1
 		 },
 		success:function(result){
-                    
+                    this.window.location.reload(true);
                 }
             });
   
