@@ -30,6 +30,9 @@ class FeedModel extends CI_Model {
         $query = $this->db->query($sql);
         $data['uid'] = $query->result();
         print_r($query->result());
+        echo $data['uid'][0]['id'];
+        echo '<br/>';
+        echo $data['uid'][0]->id;
         $count = count($query->result());
         if($count>0)
         {
