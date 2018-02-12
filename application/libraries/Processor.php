@@ -37,7 +37,7 @@ class Processor {
     public function list_campaign($account)
     {
             $session = $this->advertising->createSession($account);
-            return $this->advertising->ModifyAccount($this->advertising->getAdwordsServices(),$session); 
+            return $this->advertising->ListCampaignStatuses($this->advertising->getAdwordsServices(),$session); 
     }
 }
 
