@@ -26,14 +26,14 @@ class FeedModel extends CI_Model {
     public function user_verification($google)
     {
         $sql = "SELECT id FROM feedwize_userdata WHERE userid=".$google['userid']." AND emailid='".$google['emailid']."'";
-        echo $sql;
+//        echo $sql;
         $query = $this->db->query($sql);
         $data['uid'] = $query->result();
         $count = count($query->result());
         if($count>0)
         {
             foreach($data['uid'] as $k){$uid = $k->id;}
-            echo $uid;
+//            echo $uid;
            $this->session->set_userdata('uid', $uid);
            return TRUE;
         }
