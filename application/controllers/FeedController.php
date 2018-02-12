@@ -39,13 +39,25 @@ class FeedController extends CI_Controller {
             
 		$this->load->view('templates/header');
                 if($this->session->userdata('user_login'))
-                {$this->load->view('feed/index');}
+                {
+//                    $this->load->view('feed/index');
+                    redirect('/FeedController/dashboard/');
+                    
+                }
                 else
                 {$this->load->view('feed/login');}
 		$this->load->view('templates/footer');
 		
 		
 	}
+        public function dashboard()
+        {
+            $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back':'Welcome';
+            
+            $this->load->view('templates/header');
+            $this->load->view('feed/index', $data);
+            $this->load->view('templates/footer');
+        }
         public function account_verification()
         {
             
