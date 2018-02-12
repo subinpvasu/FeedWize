@@ -19,7 +19,9 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li>
+           <a href="#" onclick="signOut();"><span class="glyphicon glyphicon-log-out"></span> Sign out</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -55,7 +57,7 @@
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        
 
       </div>
       
