@@ -38,7 +38,7 @@ function onSignIn(googleUser) {
 		 },
 		success:function(result){
                     if($("#page").val()=='login'){
-                    window.location.reload(true);
+//                    window.location.reload(true);
                         }
                 }
             });
