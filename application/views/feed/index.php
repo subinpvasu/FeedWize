@@ -58,7 +58,7 @@
     <div class="col-sm-2 sidenav">
       <div class="well">
         
-
+<a href="#" onclick="signOut();"> Sign out</a>
       </div>
       
     </div>
