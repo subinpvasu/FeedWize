@@ -20,7 +20,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-           <a href="#" onclick="signOut();"><span class="glyphicon glyphicon-log-out"></span> Sign out</a>
+           <a href="javascript:void()" onclick="signOut();"><span class="glyphicon glyphicon-log-out"></span> Sign out</a>
         </li>
       </ul>
     </div>
