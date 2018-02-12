@@ -35,7 +35,7 @@ class FeedController extends CI_Controller {
 //		 $msg = new Processor();
 //                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
             
-            echo $this->session->userdata('user_login');
+            
             
 		$this->load->view('templates/header');
                 if($this->session->userdata('user_login'))

@@ -37,7 +37,7 @@ $(".avatar").attr("src",profile.getImageUrl());
                                 demand:1
 		 },
 		success:function(result){
-                    if($("#page").val()=='login'){
+                    if($("#page").val()=='login' && result==1){
                        setTimeout(function(){ window.location.reload(true);}, 300);
                         }
                 }
