@@ -204,6 +204,40 @@ class Advertising
     } while ($selector->getPaging()->getStartIndex() < $totalNumEntries);
    
   }
+  public function ListCampaignStatuses(AdWordsServices $adWordsServices, AdWordsSession $session) {
+    $campaignService = $adWordsServices->get($session, CampaignService::class);
+    // Create selector.
+    $selector = new Selector();
+    $selector->setFields(['Id', 'Name','Status']);
+    $selector->setOrdering([new OrderBy('Name', SortOrder::ASCENDING)]);
+    $selector->setPaging(new Paging(0, \Credentials::$PAGE_LIMIT));
+    $totalNumEntries = 0;
+    $campaign_array = array();
+    do {
+      // Make the get request.
+      $page = $campaignService->get($selector);
+      // Display results.
+      if ($page->getEntries() !== null) {
+        $totalNumEntries = $page->getTotalNumEntries();
+        foreach ($page->getEntries() as $campaign) {
+            
+//          if ((stristr($campaign->getName(), "apples")) || (stristr($campaign->getName(), "oranges")))
+//                    $this->UpdateCampaign($adWordsServices,$session, $campaign->getId(),1);
+//                else if ((stristr($campaign->getName(), "grapes")) || (stristr($campaign->getName(), "pears")))
+//                    $this->UpdateCampaign($adWordsServices,$session, $campaign->getId(), 0);
+            
+            $campaign_array = array('campaign_name'=>$campaign->getName(),'campaign_status'=>$campaign->getStatus());
+            
+            
+        }
+      }
+      // Advance the paging index.
+      $selector->getPaging()->setStartIndex(
+          $selector->getPaging()->getStartIndex() + \Credentials::$PAGE_LIMIT);
+    } while ($selector->getPaging()->getStartIndex() < $totalNumEntries);
+   echo '<pre>';
+   print_r($campaign_array);
+  }
   public function UpdateCampaign(AdWordsServices $adWordsServices, AdWordsSession $session, $campaignId, $campaignStatus)
   {
     $campaignService = $adWordsServices->get($session, CampaignService::class);
