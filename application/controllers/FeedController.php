@@ -71,7 +71,7 @@ class FeedController extends CI_Controller {
         {
             $this->load->library('Processor');
 		 $msg = new Processor();
-                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
+//                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
                  $msg->list_campaign(Credentials::$ACCOUNT_ID);
         }
         
