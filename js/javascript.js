@@ -22,7 +22,7 @@ function onSignIn(googleUser) {
 //  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   
   
-//$(".avatar").attr("src",profile.getImageUrl());
+$(".avatar").attr("src",profile.getImageUrl());
 //  var tmp ='<table style="text-align: center;width: 100%;"><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
 //  $(".logger").append(tmp);
 //  $(".signout").show();
@@ -38,7 +38,7 @@ function onSignIn(googleUser) {
 		 },
 		success:function(result){
                     if($("#page").val()=='login'){
-                       setTimeout(function(){ window.location.reload(true);}, 1000);
+                       setTimeout(function(){ window.location.reload(true);}, 300);
                         }
                 }
             });
