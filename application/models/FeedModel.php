@@ -29,14 +29,12 @@ class FeedModel extends CI_Model {
         echo $sql;
         $query = $this->db->query($sql);
         $data['uid'] = $query->result();
-        print_r($query->result());
-        echo $data['uid'][0]['id'];
-        echo '<br/>';
-        echo $data['uid'][0]->id;
         $count = count($query->result());
         if($count>0)
         {
-           $this->session->set_userdata('uid', $data['uid']['id']);
+            foreach($data['uid'] as $k){$uid = $k;}
+            echo $uid;
+           $this->session->set_userdata('uid', $uid);
            return TRUE;
         }
         else
