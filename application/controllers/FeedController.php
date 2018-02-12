@@ -50,8 +50,8 @@ class FeedController extends CI_Controller {
         {
             
             $posted_values = array('userid'=>$_POST['googleId'],'emailid'=>$_POST['googleEml'],'username'=>$_POST['googleName'],'imageurl'=>$_POST['googleImg']);
-            $data['status'] = $this->FeedModel->user_verification($posted_values);
-            if($data['status'])
+            
+            if($this->FeedModel->user_verification($posted_values))
             {
             $this->session->set_userdata('user_login', TRUE);
             $this->session->set_userdata('user_exisitence', TRUE);
@@ -63,6 +63,7 @@ class FeedController extends CI_Controller {
             $this->session->set_userdata('user_exisitence', FALSE);
             $this->session->set_userdata('google_user', $posted_values);
             }
+            echo '1';
             
         }
         
