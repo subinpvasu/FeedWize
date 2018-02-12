@@ -32,7 +32,7 @@ class FeedModel extends CI_Model {
         $count = count($query->result());
         if($count>0)
         {
-            foreach($data['uid'] as $k){$uid = $k;}
+            foreach($data['uid'] as $k){$uid = $k->id;}
             echo $uid;
            $this->session->set_userdata('uid', $uid);
            return TRUE;
