@@ -24,12 +24,6 @@ class FeedController extends CI_Controller {
             parent::__construct();
             $this->load->library('session');
             $this->load->model('FeedModel');
-            if(!$this->session->userdata('user_login'))
-            {
-             redirect('/FeedController/index/');
-             return FALSE;
-            }
-
         }
         
 	public function index()
@@ -58,7 +52,8 @@ class FeedController extends CI_Controller {
         {
             if(!$this->session->userdata('user_login'))
                 {
-                 redirect('/FeedController/index/');
+//                 redirect('/FeedController/index/');
+            return;
                 }
             
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back':'Welcome';
