@@ -61,11 +61,12 @@ $.ajax({url: siteurl+"/FeedController/account_verification/",
                         else if($("#page").val()=='logout' && result==1)
                         {
                             $("#logout").click();
+                            setTimeout(function(){window.location.reload();},100);
                         }
                         
                 }
             });
-      setTimeout(function(){window.location.reload();},100);
+      
     });
   }
   
