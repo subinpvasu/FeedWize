@@ -65,6 +65,7 @@ class FeedController extends CI_Controller {
         }
         public function account_verification()
         {
+            if($_POST['demand']==1){
             
             $posted_values = array('userid'=>$_POST['googleId'],'emailid'=>$_POST['googleEml'],'username'=>$_POST['googleName'],'imageurl'=>$_POST['googleImg']);
             
@@ -80,8 +81,15 @@ class FeedController extends CI_Controller {
             $this->session->set_userdata('user_exisitence', FALSE);
             $this->session->set_userdata('google_user', $posted_values);
             }
+           
+            }
+            else
+            {
+                $this->session->unset_userdata('user_login');
+                $this->session->unset_userdata('user_exisitence');
+                $this->session->unset_userdata('google_user');
+            }
             echo '1';
-            
         }
         
         public function adwords_test()

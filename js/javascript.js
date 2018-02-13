@@ -31,15 +31,41 @@ function onSignIn(googleUser) {
                     if($("#page").val()=='login' && result==1){
                        setTimeout(function(){ window.location.reload();}, 100);
                         }
+                        else if($("#page").val()=='logout')
+                        {
+                            $("#logout").click();
+                        }
+                        
                 }
             });
   
 }
 function signOut() {
+    var baseurl = $("#baseurl").val();
+    var siteurl = $("#siteurl").val();
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      $(".logger").html('<h3>User signed out.</h3>');
-//      setTimeout(function(){window.location.reload();},1000);
+$.ajax({url: siteurl+"/FeedController/account_verification/",
+		type:"post",
+		 data: {
+			 	googleId:profile.getId(),
+                                googleName:profile.getName(),
+                                googleImg:profile.getImageUrl(),
+                                googleEml:profile.getEmail(),
+                                demand:0
+		 },
+		success:function(result){
+                    if($("#page").val()=='login' && result==1){
+                       setTimeout(function(){ window.location.reload();}, 100);
+                        }
+                        else if($("#page").val()=='logout' && result==1)
+                        {
+                            $("#logout").click();
+                        }
+                        
+                }
+            });
+      setTimeout(function(){window.location.reload();},100);
     });
   }
   
