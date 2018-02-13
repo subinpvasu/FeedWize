@@ -48,10 +48,7 @@ function signOut() {
 $.ajax({url: siteurl+"/FeedController/account_verification/",
 		type:"post",
 		 data: {
-			 	googleId:profile.getId(),
-                                googleName:profile.getName(),
-                                googleImg:profile.getImageUrl(),
-                                googleEml:profile.getEmail(),
+			 	
                                 demand:0
 		 },
 		success:function(result){
