@@ -27,6 +27,7 @@ class FeedController extends CI_Controller {
             if(!$this->session->userdata('user_login'))
             {
              redirect('/FeedController/index/');
+             return FALSE;
             }
 
         }
