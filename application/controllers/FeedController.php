@@ -50,14 +50,17 @@ class FeedController extends CI_Controller {
 	}
         public function dashboard()
         {
-            if(!$this->session->userdata('user_login'))
-            redirect('/FeedController/index/');
-            
-            
+            if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back':'Welcome';
-            
             $this->load->view('templates/header');
             $this->load->view('feed/index', $data);
+            $this->load->view('templates/footer');
+        }
+        public function logout()
+        {
+            if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
+            $this->load->view('templates/header');
+            $this->load->view('feed/logout');
             $this->load->view('templates/footer');
         }
         public function account_verification()
