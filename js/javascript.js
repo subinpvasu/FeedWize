@@ -16,15 +16,6 @@ function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   var baseurl = $("#baseurl").val();
   var siteurl = $("#siteurl").val();
-//  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-//  console.log('Name: ' + profile.getName());
-//  console.log('Image URL: ' + profile.getImageUrl());
-//  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  
-  
-//$(".avatar").attr("src",profile.getImageUrl());
-//  var tmp ='<table style="text-align: center;width: 100%;"><tr><td>'+profile.getName()+'</td></tr><tr><td>'+profile.getEmail()+'</td></tr></table>';
-//  $(".logger").append(tmp);
   $(".signout").show();
   
   $.ajax({url: siteurl+"/FeedController/account_verification/",
@@ -38,7 +29,7 @@ function onSignIn(googleUser) {
 		 },
 		success:function(result){
                     if($("#page").val()=='login' && result==1){
-                       setTimeout(function(){ window.location.reload();}, 1000);
+                       setTimeout(function(){ window.location.reload();}, 100);
                         }
                 }
             });

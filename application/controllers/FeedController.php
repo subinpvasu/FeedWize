@@ -24,7 +24,10 @@ class FeedController extends CI_Controller {
             parent::__construct();
             $this->load->library('session');
             $this->load->model('FeedModel');
-            
+            if(!$this->session->userdata('user_login'))
+            {
+             redirect('/FeedController/index/');
+            }
 
         }
         
@@ -90,6 +93,11 @@ class FeedController extends CI_Controller {
 		 $msg = new Processor();
 //                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
                  $msg->list_campaign(Credentials::$ACCOUNT_ID);
+        }
+        
+        public function test()
+        {
+            echo 'good';
         }
         
         
