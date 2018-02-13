@@ -3,7 +3,7 @@
   </div>
 
   
-<input type="hidden" id="page" value="login"/>
+<input type="hidden" id="page" value="logout"/>
   <div class="container" style="text-align: center;width: 120px;margin: 0px auto;">
    <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </div>
