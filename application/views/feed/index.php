@@ -1,7 +1,7 @@
 
 
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -27,11 +27,14 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
+    
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
     <div class="col-sm-8 text-left"> 
       <h1><?php echo $welcome; ?> </h1>
       <p><?php print_r($this->session->userdata('google_user')); ?></p>

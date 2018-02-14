@@ -27,26 +27,17 @@ class FeedController extends CI_Controller {
         }
         
 	public function index()
-	{
-		
-//		$this->load->library('Processor');
-//		 $msg = new Processor();
-//                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
-            
-            
-            
+	{  
 		$this->load->view('templates/header');
                 if($this->session->userdata('user_login'))
                 {
-//                    $this->load->view('feed/index');
-                    redirect('/FeedController/dashboard/');
-                    
+                    redirect('/FeedController/dashboard/');                    
                 }
                 else
-                {$this->load->view('feed/login');}
-		$this->load->view('templates/footer');
-		
-		
+                {
+                    $this->load->view('feed/login');                    
+                }
+		$this->load->view('templates/footer');		
 	}
         public function dashboard()
         {
@@ -65,10 +56,8 @@ class FeedController extends CI_Controller {
         }
         public function account_verification()
         {
-            if($_POST['demand']==1){
-            
-            $posted_values = array('userid'=>$_POST['googleId'],'emailid'=>$_POST['googleEml'],'username'=>$_POST['googleName'],'imageurl'=>$_POST['googleImg']);
-            
+            if($_POST['demand']==1){            
+            $posted_values = array('userid'=>$_POST['googleId'],'emailid'=>$_POST['googleEml'],'username'=>$_POST['googleName'],'imageurl'=>$_POST['googleImg']);            
             if($this->FeedModel->user_verification($posted_values))
             {
             $this->session->set_userdata('user_login', TRUE);
@@ -80,8 +69,7 @@ class FeedController extends CI_Controller {
             $this->session->set_userdata('user_login', TRUE);
             $this->session->set_userdata('user_exisitence', FALSE);
             $this->session->set_userdata('google_user', $posted_values);
-            }
-           
+            }           
             }
             else
             {
@@ -92,6 +80,28 @@ class FeedController extends CI_Controller {
             echo '1';
         }
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         public function adwords_test()
         {
             $this->load->library('Processor');
@@ -99,11 +109,6 @@ class FeedController extends CI_Controller {
 //                 $msg->modify_account(Credentials::$ACCOUNT_ID,0,0);
                  $msg->list_campaign(Credentials::$ACCOUNT_ID);
         }
-        
-        public function test()
-        {
-            echo 'good';
-        }
-        
+         
         
 }
