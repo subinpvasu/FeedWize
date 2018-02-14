@@ -29,6 +29,7 @@ class FeedController extends CI_Controller {
 	public function index()
 	{  
 		$this->load->view('templates/header');
+//                $this->session->set_userdata('user_login',true);
                 if($this->session->userdata('user_login'))
                 {
                     redirect('/FeedController/dashboard/');                    

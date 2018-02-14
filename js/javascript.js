@@ -10,6 +10,11 @@
 $(document).ready(function(){
       var baseurl = $("#baseurl").val();
       var siteurl = $("#siteurl").val();
+      $(".menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+       
+    });
   });
 
 function onSignIn(googleUser) {
@@ -66,5 +71,7 @@ $.ajax({url: siteurl+"/FeedController/account_verification/",
       
     });
   }
+  
+
   
   

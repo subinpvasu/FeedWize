@@ -7,6 +7,8 @@
  */
 
 ?>
+</div>
+    <!-- /#wrapper -->
 <!--<footer class="container-fluid text-center">
   <p>Feed Wize 2018</p>
 </footer>-->
