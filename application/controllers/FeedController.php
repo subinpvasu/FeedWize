@@ -43,7 +43,7 @@ class FeedController extends CI_Controller {
         public function dashboard()
         {
             if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
-            $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back':'Welcome';
+            $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $this->load->view('templates/header');
             $this->load->view('feed/index', $data);
             $this->load->view('templates/footer');
