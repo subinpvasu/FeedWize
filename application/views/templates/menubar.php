@@ -40,7 +40,7 @@
           </li>
       </ul>
       <ul class="nav navbar-nav navbar-right"  data-style="btn-warning">
-          <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('google_user')['username']; ?> <img src="<?php echo $this->session->userdata('google_user')['imageurl']; ?>" class="img-circle" alt="User" width="40" height="40"> </a>
+          <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('google_user')['username']; ?> <span class="caret"></span> <img src="<?php echo $this->session->userdata('google_user')['imageurl']; ?>" class="img-circle" alt="User" width="25" height="25"> </a>
           <ul class="dropdown-menu"> 	
           <li><a href="#"><i class="far fa-address-card"></i> Profile</a></li>
           <li><a href="#"><i class="far fa-envelope-open"></i> Notifications</a></li>
