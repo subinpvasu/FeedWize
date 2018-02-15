@@ -60,7 +60,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 button:hover {
@@ -242,5 +242,56 @@ body {
     #wrapper.toggled #page-content-wrapper {
         position: relative;
         margin-right: 0;
+    }
+    .iconsize{
+        width:100px;
+    }
+    .import-type-box{
+        border:1px solid grey;
+        text-align: center;
+        height: 180px;
+        padding: 20px;
+        margin: 20px;
+        cursor: pointer;
+    }
+    .account-add-box
+    {
+        border:1px solid grey;
+        text-align: center;
+        height: 150px;
+        padding: 20px;
+        margin: 20px 0px;
+        cursor: pointer;
+    }
+    .highlight-box{
+        background-color: #ccc;
+        color:#000;
+        font-weight: bold;
+        
+    }
+    .highlight-box label{
+        background-color: #ccc;
+        color:#000;
+        font-weight: bold;
+        
+    }
+    .highlight-box-hi
+    {
+        background-color: #ccc;
+        color:#000;
+        font-weight: bold;
+        width: 90%;
+        height: 50px;
+        padding: 10px;
+        font-size: 25px;
+        
+    }
+    .modal-header-extra{
+        background-color: #ccc;
+        border-radius: 2px 2px 0px 0px;
+        color: #000;
+    }
+    .modal-title {
+        font-weight: bold;
     }
 }

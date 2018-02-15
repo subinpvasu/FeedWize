@@ -19,8 +19,10 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>css/fontawesome-all.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>css/select.min.css">
   <script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url(); ?>js/select.min.js"></script>
   <script src="<?php echo base_url(); ?>js/javascript.js"></script>
   
 

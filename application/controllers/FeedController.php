@@ -44,9 +44,33 @@ class FeedController extends CI_Controller {
         {
             if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
+            $data['menu_active'] = 1;
             $this->load->view('templates/header');
-            $this->load->view('templates/menubar');
+            $this->load->view('templates/menubar', $data);
+            $this->load->view('modal/account_modal');
             $this->load->view('feed/index', $data);
+            $this->load->view('templates/footer');
+        }
+        public function imports()
+        {
+            if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
+            $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
+            $data['menu_active'] = 2;
+            $this->load->view('templates/header');
+            $this->load->view('templates/menubar',$data);
+            $this->load->view('modal/feed_modal');
+            $this->load->view('feed/imports');
+            $this->load->view('templates/footer');
+        }
+        public function settings()
+        {
+            if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
+            $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
+            $data['menu_active'] = 4;
+            $this->load->view('templates/header');
+            $this->load->view('templates/menubar',$data);
+            $this->load->view('modal/adwords_modal');
+            $this->load->view('feed/settings');
             $this->load->view('templates/footer');
         }
         public function logout()

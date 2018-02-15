@@ -20,10 +20,27 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Projects</a></li>
+          <li>
+              
+        <select class="selectpicker" data-style="btn-default">
+    <optgroup label="Active Accounts">
+        <option>Select</option>
+        <option>Account 1</option>
+        <option>Account 2</option>
+        <option>Account 3</option>
+        <option>Account 4</option>
+    </optgroup>
+    <optgroup label="Inactive Accounts">
+      <option>Account 9</option>
+      <option>Account 7</option>
+      <option>Account 6</option>
+    </optgroup>
+  </select>      
+              
+          </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
+      <ul class="nav navbar-nav navbar-right"  data-style="btn-warning">
+          <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('google_user')['username']; ?> <img src="<?php echo $this->session->userdata('google_user')['imageurl']; ?>" class="img-circle" alt="User" width="40" height="40"> </a>
           <ul class="dropdown-menu"> 	
           <li><a href="#"><i class="far fa-address-card"></i> Profile</a></li>
           <li><a href="#"><i class="far fa-envelope-open"></i> Notifications</a></li>
@@ -45,16 +62,16 @@
                     <a class="menu-toggle" href="#"><i class="fas fa-align-justify fa-2x"></i></a>
                 </li>
                 <li>
-                    <a class="selected" href="#"><i class="fas fa-chart-line fa-2x"></i>&nbsp;&nbsp;<h5>Dashboard</h5></a>
+                    <a <?php echo $menu_active==1?'class="selected"':''; ?>  href="<?php echo site_url() ?>/FeedController/dashboard/"><i class="fas fa-chart-line fa-2x"></i>&nbsp;&nbsp;<h5>Dashboard</h5></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-upload fa-2x"></i>&nbsp;&nbsp;<h5>Imports</h5></a>
+                    <a <?php echo $menu_active==2?'class="selected"':''; ?>  href="<?php echo site_url() ?>/FeedController/imports/"><i class="fas fa-upload fa-2x"></i>&nbsp;&nbsp;<h5>Imports</h5></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-forward fa-2x"></i>&nbsp;&nbsp;<h5>Preview</h5></a>
+                    <a <?php echo $menu_active==3?'class="selected"':''; ?>  href="<?php echo site_url() ?>/FeedController/preview/"><i class="fas fa-forward fa-2x"></i>&nbsp;&nbsp;<h5>Preview</h5></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-cog fa-2x"></i>&nbsp;&nbsp;<h5>Settings</h5></a>
+                    <a <?php echo $menu_active==4?'class="selected"':''; ?>  href="<?php echo site_url() ?>/FeedController/settings/"><i class="fas fa-cog fa-2x"></i>&nbsp;&nbsp;<h5>Settings</h5></a>
                 </li>
                                 
             </ul>
