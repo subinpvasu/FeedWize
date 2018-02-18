@@ -11,15 +11,16 @@ class FeedModel extends CI_Model {
     
     public function __construct() {
         $this->load->database ();
+        $this->load->helper('date');
         
-        $tables = array(
+      /*  $tables = array(
             0=>"CREATE TABLE IF NOT EXISTS feedwize_userdata ( id int(10) NOT NULL AUTO_INCREMENT, userid varchar(50) NOT NULL, username varchar(256) NOT NULL, imageurl varchar(256) NOT NULL, emailid varchar(256) NOT NULL, status int(10) NOT NULL DEFAULT '0', added datetime NOT NULL, updated datetime NOT NULL, PRIMARY KEY (id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1"
         );
         
         foreach($tables as $table)
         {            
             $this->db->query($table);
-        }
+        }*/
         
     }
     
@@ -44,6 +45,44 @@ class FeedModel extends CI_Model {
             $this->session->set_userdata('uid', $this->db->insert_id());
             return FALSE;
         }
+    }
+    
+    public function create_account($account_name)
+    {
+        
+        $result = array();
+        $now = date('Y-m-d H:i:s');
+        //check name available
+        $sql = "SELECT * FROM feedwize_user_accounts WHERE account_name='".$account_name."' AND userid=".$this->session->userdata('uid');
+        $query = $this->db->query($sql);
+        $data['account_data'] = $query->result();
+        $total = count($query->result());
+        if($total==0)
+        {
+            
+            $account = array('userid'=>$this->session->userdata('uid'),
+                'account_name'=>$account_name,
+                'adwords_status'=>0,
+                'status'=>0,
+                'added'=>$now);
+             $this->db->insert('feedwize_user_accounts', $account);
+             $result['account_created'] = 1;
+             $result['account_existing'] = 0;
+             
+        }
+        else
+        {
+            $result['account_created'] = 0;
+            $result['account_existing'] = 1;
+        }
+        return $result;
+    }
+    
+    public function list_accounts()
+    {
+        $sql = "SELECT * FROM feedwize_user_accounts WHERE  userid=".$this->session->userdata('uid')." ORDER BY status DESC";
+        $query = $this->db->query($sql);
+        return $query->result();
     }
     
     

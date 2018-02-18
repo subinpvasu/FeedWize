@@ -23,18 +23,7 @@
           <li>
               
         <select class="selectpicker" data-style="btn-default">
-    <optgroup label="Active Accounts">
-        <option>Select</option>
-        <option>Account 1</option>
-        <option>Account 2</option>
-        <option>Account 3</option>
-        <option>Account 4</option>
-    </optgroup>
-    <optgroup label="Inactive Accounts">
-      <option>Account 9</option>
-      <option>Account 7</option>
-      <option>Account 6</option>
-    </optgroup>
+    
   </select>      
               
           </li>

@@ -11,7 +11,7 @@
    <div class="logger"></div>
   </div>
   <div class="container signout" style="text-align: center;width: 300px;margin: 0px auto;display: none;">
-      <!--<h3>Please wait....</h3>-->
+      <h3>Please wait....</h3>
       <a href="#" id="logout" onclick="signOut();" style="color: transparent">Sign out</a>
 
 

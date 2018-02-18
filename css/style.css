@@ -218,6 +218,12 @@ body {
 }
 
 @media(min-width:768px) {
+    .org-colors{
+        color:#FFA500;
+    }
+    .inactive-field{
+        pointer-events: none;
+    }
     #wrapper {
         padding-left: 200px;
     }
@@ -294,4 +300,5 @@ body {
     .modal-title {
         font-weight: bold;
     }
+    
 }

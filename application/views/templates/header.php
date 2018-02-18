@@ -31,3 +31,5 @@
 </head><body>
     <input type="hidden" name="baseurl" id="baseurl" value="<?php echo base_url(); ?>"/>
     <input type="hidden" name="siteurl" id="siteurl" value="<?php echo site_url(); ?>"/>
+    <input type="hidden" name="accounts" id="accounts" value="<?php echo urlencode(json_encode($accounts)); ?>"/>
+    

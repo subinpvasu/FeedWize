@@ -24,12 +24,14 @@ class FeedController extends CI_Controller {
             parent::__construct();
             $this->load->library('session');
             $this->load->model('FeedModel');
+            $this->load->helper('date');
         }
         
 	public function index()
 	{  
 		$this->load->view('templates/header');
 //                $this->session->set_userdata('user_login',true);
+//                $this->session->set_userdata('uid',11);
                 if($this->session->userdata('user_login'))
                 {
                     redirect('/FeedController/dashboard/');                    
@@ -45,7 +47,8 @@ class FeedController extends CI_Controller {
             if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $data['menu_active'] = 1;
-            $this->load->view('templates/header');
+            $data['accounts'] = $this->FeedModel->list_accounts();
+            $this->load->view('templates/header', $data);
             $this->load->view('templates/menubar', $data);
             $this->load->view('modal/account_modal');
             $this->load->view('feed/index', $data);
@@ -56,7 +59,8 @@ class FeedController extends CI_Controller {
             if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $data['menu_active'] = 2;
-            $this->load->view('templates/header');
+            $data['accounts'] = $this->FeedModel->list_accounts();
+            $this->load->view('templates/header',$data);
             $this->load->view('templates/menubar',$data);
             $this->load->view('modal/feed_modal');
             $this->load->view('feed/imports');
@@ -67,7 +71,8 @@ class FeedController extends CI_Controller {
             if(!$this->session->userdata('user_login'))redirect('/FeedController/index/');
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $data['menu_active'] = 4;
-            $this->load->view('templates/header');
+            $data['accounts'] = $this->FeedModel->list_accounts();
+            $this->load->view('templates/header',$data);
             $this->load->view('templates/menubar',$data);
             $this->load->view('modal/adwords_modal');
             $this->load->view('feed/settings');
@@ -104,6 +109,11 @@ class FeedController extends CI_Controller {
                 $this->session->unset_userdata('google_user');
             }
             echo '1';
+        }
+        public function user_project_creation()
+        {  
+           $data['account'] = $this->FeedModel->create_account($this->input->post('account'));
+           echo json_encode($data['account']);
         }
         
         
