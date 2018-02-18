@@ -7,6 +7,7 @@
  */
 
 ?>
+<input type="hidden" name="accounts" id="accounts" value="<?php echo urlencode(json_encode($accounts)); ?>"/>
 
     <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">

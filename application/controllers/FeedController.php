@@ -48,7 +48,7 @@ class FeedController extends CI_Controller {
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $data['menu_active'] = 1;
             $data['accounts'] = $this->FeedModel->list_accounts();
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/header');
             $this->load->view('templates/menubar', $data);
             $this->load->view('modal/account_modal');
             $this->load->view('feed/index', $data);
@@ -60,7 +60,7 @@ class FeedController extends CI_Controller {
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $data['menu_active'] = 2;
             $data['accounts'] = $this->FeedModel->list_accounts();
-            $this->load->view('templates/header',$data);
+            $this->load->view('templates/header');
             $this->load->view('templates/menubar',$data);
             $this->load->view('modal/feed_modal');
             $this->load->view('feed/imports');
@@ -72,7 +72,7 @@ class FeedController extends CI_Controller {
             $data['welcome'] = $this->session->userdata('user_exisitence')?'Welcome Back, '.$this->session->userdata('google_user')['username']:'Welcome, '.$this->session->userdata('google_user')['username'];
             $data['menu_active'] = 4;
             $data['accounts'] = $this->FeedModel->list_accounts();
-            $this->load->view('templates/header',$data);
+            $this->load->view('templates/header');
             $this->load->view('templates/menubar',$data);
             $this->load->view('modal/adwords_modal');
             $this->load->view('feed/settings');
