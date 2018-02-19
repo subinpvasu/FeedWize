@@ -10,7 +10,7 @@
         <h4 class="modal-title">Create New Account</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <div class="form-group reply-message">
             <label for="email">Account Name:</label>
       <input type="email" class="form-control" id="account_name" placeholder="Account Name" name="account_name" required="">
     </div>

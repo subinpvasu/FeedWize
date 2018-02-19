@@ -41,11 +41,11 @@ $(document).ready(function(){
     {
         for(var i=0;i<accounts.length;i++)
     {
-        account_box += '<div class="col-lg-3 import-type-box"><div class="highlight-box"></div>';
+        account_box += '<div class="col-lg-2 import-type-box account-box">';
         if(accounts[i].status==1){
-            account_box += '<img src="'+baseurl+'/images/edit.ico"  class="iconsize"><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
+            account_box += '<div class="sub-colors-grn" style="text-align:right;padding-right:1px;"><input type="hidden" class="account" value="'+accounts[i].id+'"><i class="far fa-play-circle fa-2x"></i></div><img src="'+baseurl+'/images/edit.ico"  class="iconsize image"><div class="middle sub-colors-grn"><span class="sub-colors-grn"><i class="far fa-list-alt fa-2x sub-colors-grn"></i> Edit</span><br/><span class="sub-colors-red"><i class="fas fa-ban fa-2x sub-colors-red"></i> Delete</span></div><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
         }else{
-             account_box += '<img src="'+baseurl+'/images/edit-inactive.png"  class="iconsize"><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
+             account_box += '<div class="sub-colors-gry" style="text-align:right;padding-right:1px;"><input type="hidden" class="account" value="'+accounts[i].id+'"><i class="far fa-pause-circle fa-2x"></i></div><img src="'+baseurl+'/images/edit-inactive.png"  class="iconsize image"><div class="middle sub-colors-grn"><span class="sub-colors-grn"><i class="far fa-list-alt fa-2x sub-colors-grn"></i> Edit</span><br/><span class="sub-colors-red"><i class="fas fa-ban fa-2x sub-colors-red"></i> Delete</span></div><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
         }
             
     }
@@ -70,8 +70,18 @@ $(document).ready(function(){
                     var obj = JSON.parse(result);
                     if(obj.account_created==1)
                     {
-                        alert("New Account Created Successfully");
-                        window.location.reload(true);
+                        
+                        $(".reply-message").html('<label for="email">New Account Created Successfully.</label>');
+                        $(".wait-section").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+                       $('#AccountModal').on('hidden.bs.modal', function () {
+                          window.location.reload(true);
+                        });
+                    }
+                    if(obj.account_existing==1)
+                    {
+                        $(".button-section").show();
+                         $(".wait-section").hide();
+                        $(".reply-message").prepend('<label for="email" style="color:red;font-weight:bold;">Account name exists.</label><br/>');
                     }
                         
                 }
