@@ -9,7 +9,7 @@
 ?>
 <input type="hidden" name="accounts" id="accounts" value="<?php echo urlencode(json_encode($accounts)); ?>"/>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -17,7 +17,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">FeedWize</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -30,7 +30,7 @@
           </li>
       </ul>
       <ul class="nav navbar-nav navbar-right"  data-style="btn-warning">
-          <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('google_user')['username']; ?> <span class="caret"></span> <img src="<?php echo $this->session->userdata('google_user')['imageurl']; ?>" class="img-circle" alt="User" width="25" height="25"> </a>
+          <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('google_user')['username']; ?> <img src="<?php echo $this->session->userdata('google_user')['imageurl']; ?>" class="img-circle" alt="User" width="25" height="25"> <span class="caret"></span></a>
           <ul class="dropdown-menu"> 	
           <li><a href="#"><i class="far fa-address-card"></i> Profile</a></li>
           <li><a href="#"><i class="far fa-envelope-open"></i> Notifications</a></li>
@@ -49,7 +49,7 @@
             <ul class="sidebar-nav">
                 
                 <li>
-                    <a class="menu-toggle" href="#"><i class="fas fa-align-justify fa-2x"></i></a>
+                    <a class="menu-toggle" href="#"><i class="fas fa-align-justify fa-2x"></i>&nbsp;&nbsp;<h5> Main Menu</h5></a>
                 </li>
                 <li>
                     <a <?php echo $menu_active==1?'class="selected"':''; ?>  href="<?php echo site_url() ?>/FeedController/dashboard/"><i class="fas fa-chart-line fa-2x"></i>&nbsp;&nbsp;<h5>Dashboard</h5></a>

@@ -10,7 +10,7 @@
 $(document).ready(function(){
       var baseurl = $("#baseurl").val();
       var siteurl = $("#siteurl").val();
-      
+      $("#wrapper").css("min-height",eval(screen.height-100)+'px');
       $(".wait-section").hide();
       $(".menu-toggle").click(function(e) {
         e.preventDefault();
@@ -43,9 +43,9 @@ $(document).ready(function(){
     {
         account_box += '<div class="col-lg-2 import-type-box account-box">';
         if(accounts[i].status==1){
-            account_box += '<div class="sub-colors-grn" style="text-align:right;padding-right:1px;"><input type="hidden" class="account" value="'+accounts[i].id+'"><i class="far fa-play-circle fa-2x"></i></div><img src="'+baseurl+'/images/edit.ico"  class="iconsize image"><div class="middle sub-colors-grn"><span class="sub-colors-grn"><i class="far fa-list-alt fa-2x sub-colors-grn"></i> Edit</span><br/><span class="sub-colors-red"><i class="fas fa-ban fa-2x sub-colors-red"></i> Delete</span></div><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
+            account_box += '<div class="sub-colors-grn" style="text-align:right;padding-right:1px;"><input type="hidden" class="account" value="'+accounts[i].id+'"><i class="far fa-play-circle fa-2x"></i></div><i class="fas fa-chart-area iconsize image fa-8x org-colors"></i><div class="middle sub-colors-grn"><span class="sub-colors-grn edition" name="'+accounts[i].id+'"><i class="far fa-list-alt fa-2x sub-colors-grn"></i> Edit</span><br/><span class="sub-colors-red deletion"  name="'+accounts[i].id+'"><i class="fas fa-ban fa-2x sub-colors-red"></i> Delete</span></div><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
         }else{
-             account_box += '<div class="sub-colors-gry" style="text-align:right;padding-right:1px;"><input type="hidden" class="account" value="'+accounts[i].id+'"><i class="far fa-pause-circle fa-2x"></i></div><img src="'+baseurl+'/images/edit-inactive.png"  class="iconsize image"><div class="middle sub-colors-grn"><span class="sub-colors-grn"><i class="far fa-list-alt fa-2x sub-colors-grn"></i> Edit</span><br/><span class="sub-colors-red"><i class="fas fa-ban fa-2x sub-colors-red"></i> Delete</span></div><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
+             account_box += '<div class="sub-colors-gry" style="text-align:right;padding-right:1px;"><input type="hidden" class="account" value="'+accounts[i].id+'"><i class="far fa-pause-circle fa-2x"></i></div><i class="fas fa-chart-area iconsize image fa-8x sub-colors-gry"></i><div class="middle sub-colors-grn"><span class="sub-colors-grn edition" name="'+accounts[i].id+'"><i class="far fa-list-alt fa-2x sub-colors-grn"></i> Edit</span><br/><span class="sub-colors-red deletion"  name="'+accounts[i].id+'"><i class="fas fa-ban fa-2x sub-colors-red"></i> Delete</span></div><div class="highlight-box"><label>'+encodeURIComponent(accounts[i].account_name).replace(/%2B/g, " ")+'</label></div></div>';
         }
             
     }

@@ -16,7 +16,7 @@
                     <div class="row list-accounts">
                 <div class="col-lg-2 import-type-box account-box"  data-toggle="modal" data-target="#AccountModal">
                     <div class="sub-colors-grn" style="text-align:right;padding-right:1px;"><i class="far fa-play-circle fa-2x" style="visibility: hidden;"></i></div>
-                        <img src="<?php echo base_url();?>/images/addicon.png" class="iconsize image"><div class="middle sub-colors-grn"><i class="fas fa-plus-circle fa-2x"></i> Account</div>
+                    <i class="fas fa-plus-circle fa-8x iconsize image org-colors"></i><div class="middle sub-colors-grn"><span style="cursor: pointer;"><i class="fas fa-plus-circle fa-2x"></i> Account</span></div>
                         
 </div>
                         

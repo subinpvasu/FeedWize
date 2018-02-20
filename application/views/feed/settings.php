@@ -9,7 +9,7 @@
                         
                     
                     <div class="row">
-                <div class="col-lg-3 import-type-box" data-toggle="modal" data-target="#AdwordsModal" >
+                <div class="col-lg-2 import-type-box" data-toggle="modal" data-target="#AdwordsModal" >
                     <img src="<?php echo base_url();?>images/market.png" class="iconsize">
                     <div class="checkbox highlight-box">
                         <label>Google AdWords</label>
