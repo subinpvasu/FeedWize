@@ -54,17 +54,21 @@ $(document).ready(function(){
     
     
     
+    
     //create account 
     
-    $("#account_create").click(function(){
+    $("#account_create").click(function(){ 
         if(verifyInputField($("#account_name").val())){
+        if(!$(this).hasClass( "update" )){
             $(".button-section").hide();
             $(".wait-section").show();
             $("#account_name").addClass('inactive-field');
+            
           $.ajax({url: siteurl+"/FeedController/user_project_creation/",
 		type:"post",
 		 data: {
-			 	account:$("#account_name").val()
+                     projectid:0,
+                     account:$("#account_name").val()
 		 },
 		success:function(result){
                     var obj = JSON.parse(result);
@@ -80,15 +84,125 @@ $(document).ready(function(){
                     if(obj.account_existing==1)
                     {
                         $(".button-section").show();
-                         $(".wait-section").hide();
-                        $(".reply-message").prepend('<label for="email" style="color:red;font-weight:bold;">Account name exists.</label><br/>');
+                        $(".wait-section").hide();
+                        $("#account_name").removeClass('inactive-field');
+                        $(".reply-message").prepend('<label for="email" class="return_msg" style="color:red;font-weight:bold;">Account name exists.</label><br/>');
                     }
                         
                 }
             });
         }
+        else
+        {
+        
+            $(".button-section").hide();
+            $(".wait-section").show();
+            $("#account_name").addClass('inactive-field');
+          $.ajax({url: siteurl+"/FeedController/user_project_creation/",
+		type:"post",
+		 data: {
+                    projectid:$("#accountid").val(),
+                    account:$("#account_name").val()
+		 },
+		success:function(result){
+                    var obj = JSON.parse(result);
+                    if(obj.account_updated==1)
+                    {
+                        
+                        $(".reply-message").html('<label for="email">Account Updated Successfully.</label>');
+                        $(".wait-section").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+                        $('#AccountModal').on('hidden.bs.modal', function () {
+                        window.location.reload(true);
+                        });
+                    }
+                    if(obj.account_existing==1)
+                    {
+                        $(".button-section").show();
+                        $(".wait-section").hide();
+                        $("#account_name").removeClass('inactive-field');
+                        $(".reply-message").prepend('<label for="email"  class="return_msg"  style="color:red;font-weight:bold;">Account name exists.</label><br/>');
+                        
+            $("#account_cancel").click(function(){
+            $(".return_msg").remove();
+            $("#account_name").val('');
+            $(".modal-title").text('Create New Account');
+            $("#account_create").text('Create');
+            $("#account_create").removeClass('update');
+                     });
+                    }
+                        
+                }
+            });    
+        }
+        }
     });
     
+    //account edit
+    $(".edition").click(function(){
+        var accid = $(this).attr("name");
+        $("#AccountModal").modal('show'); 
+        $(".wait-section").show();
+        $(".button-section").hide();
+        $("#account_name").addClass('inactive-field');
+        $(".modal-title").text('Update Account');
+         $.ajax({url: siteurl+"/FeedController/get_user_account_details/",
+		type:"post",
+		 data: {
+			 	account:accid
+		 },
+		success:function(result){
+                    var obj = JSON.parse(result);
+                     $("#AccountModal").modal('show'); 
+                     $(".wait-section").hide();
+                     $(".button-section").show();
+                     $("#account_name").val(obj[0].account_name);
+                     $("#account_name").removeClass('inactive-field');
+                     $("#account_create").text('Update');
+                     $("#account_create").addClass('update');
+                     $("#accountid").val(accid);
+                     
+                     $("#account_cancel").click(function(){
+            $(".return_msg").remove();
+            $("#account_name").val('');
+            $(".modal-title").text('Create New Account');
+            $("#account_create").text('Create');
+            $("#account_create").removeClass('update');
+                     });
+                        
+                }
+            });
+            
+            
+    });
+    //account delete
+    $(".deletion").click(function(){
+        var accid = $(this).attr("name");
+        
+        $("#MessageModal").modal('show'); 
+        $("#msg_ok").click(function(){
+            $(".wait-section").show();
+            $(".button-section").hide();
+             $.ajax({url: siteurl+"/FeedController/delete_user_account/",
+		type:"post",
+		 data: {
+			 	account:accid
+		 },
+		success:function(result){
+                     $(".wait-section").hide();
+                     $(".modal-body").html('<h3>Account Removed.</h3>');
+//                     $(".button-section").show();
+                     setTimeout(function(){$("#MessageModal").modal('hide'); },1000);
+                        $('#MessageModal').on('hidden.bs.modal', function () {
+                        window.location.reload(true);
+                        });
+                }
+            });
+        });
+        $("#msg_cancel").click(function(){
+            $("#MessageModal").modal('hide'); 
+        });
+        
+    });
     
   });
 

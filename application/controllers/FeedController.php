@@ -51,6 +51,7 @@ class FeedController extends CI_Controller {
             $this->load->view('templates/header');
             $this->load->view('templates/menubar', $data);
             $this->load->view('modal/account_modal');
+            $this->load->view('modal/message_modal');
             $this->load->view('feed/index', $data);
             $this->load->view('templates/footer');
         }
@@ -112,10 +113,19 @@ class FeedController extends CI_Controller {
         }
         public function user_project_creation()
         {  
-           $data['account'] = $this->FeedModel->create_account($this->input->post('account'));
+           $data['account'] = $this->FeedModel->create_account($this->input->post('account'), $this->input->post('projectid'));
            echo json_encode($data['account']);
         }
-        
+        public function get_user_account_details()
+        {
+            $data['account'] = $this->FeedModel->get_account_byid($this->input->post('account'));
+           echo json_encode($data['account']);
+        }
+        public function delete_user_account()
+        {
+           echo $this->FeedModel->delete_account_byid($this->input->post('account'));
+           
+        }
         
         
         

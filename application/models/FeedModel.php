@@ -47,19 +47,21 @@ class FeedModel extends CI_Model {
         }
     }
     
-    public function create_account($account_name)
+    public function create_account($account_name, $projectid)
     {
         
         $result = array();
         $now = date('Y-m-d H:i:s');
         //check name available
-        $sql = "SELECT * FROM feedwize_user_accounts WHERE account_name='".$account_name."' AND userid=".$this->session->userdata('uid');
+        $sql = "SELECT * FROM feedwize_user_accounts WHERE deletion=0 AND account_name='".$account_name."' AND userid=".$this->session->userdata('uid');
         $query = $this->db->query($sql);
         $data['account_data'] = $query->result();
         $total = count($query->result());
         if($total==0)
         {
             
+            if($projectid == 0)
+            {
             $account = array('userid'=>$this->session->userdata('uid'),
                 'account_name'=>$account_name,
                 'adwords_status'=>0,
@@ -68,21 +70,52 @@ class FeedModel extends CI_Model {
              $this->db->insert('feedwize_user_accounts', $account);
              $result['account_created'] = 1;
              $result['account_existing'] = 0;
+            }
+            else
+            {
+                $account = array(
+                'account_name'=>$account_name,
+                'updated'=>$now);
+             
+             $this->db->where('id', $projectid);
+             $this->db->update('feedwize_user_accounts', $account);
+
+             $result['account_updated'] = 1;
+             $result['account_existing'] = 0;
+            }
              
         }
         else
         {
             $result['account_created'] = 0;
             $result['account_existing'] = 1;
+            $result['account_updated'] = 0;
         }
         return $result;
     }
     
     public function list_accounts()
     {
-        $sql = "SELECT * FROM feedwize_user_accounts WHERE  userid=".$this->session->userdata('uid')." ORDER BY status DESC";
+        $sql = "SELECT * FROM feedwize_user_accounts WHERE deletion=0 AND  userid=".$this->session->userdata('uid')." ORDER BY status DESC";
         $query = $this->db->query($sql);
         return $query->result();
+    }
+    public function get_account_byid($accountid)
+    {
+        $sql = "SELECT * FROM feedwize_user_accounts WHERE deletion=0 AND  userid=".$this->session->userdata('uid')." AND id=".$accountid;
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+    public function delete_account_byid($accountid)
+    {
+        $now = date('Y-m-d H:i:s');
+         $account = array(
+                'deletion'=>1,
+                'updated'=>$now);
+             
+             $this->db->where('id', $accountid);
+             $this->db->update('feedwize_user_accounts', $account);
+             return true;
     }
     
     
